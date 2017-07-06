@@ -36,6 +36,10 @@ if [ ! -z "$CORS" ]; then
 	ARGS="$ARGS --cors"
 fi
 
+if [ ! -z "$WATCH" ]; then
+	ARGS="$ARGS --watch"
+fi
+
 # Sleep up to 60 seconds waiting for DB to be ready;
 while ! pg_isready -t 5; do
 	sleep 1;

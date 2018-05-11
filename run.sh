@@ -40,6 +40,10 @@ if [ ! -z "$WATCH" ]; then
 	ARGS="$ARGS --watch"
 fi
 
+if [ ! -z "$PLUGINS" ]; then
+	ARGS="$ARGS --append-plugins $PLUGINS"
+fi
+
 # Sleep up to 60 seconds waiting for DB to be ready;
 while ! pg_isready -t 5; do
 	sleep 1;
@@ -49,4 +53,5 @@ postgraphile \
 	-c postgres://$PGUSER:$PGPASSWORD@$PGHOST:$PGPORT/$PGDATABASE \
 	-s $DB_SCHEMA \
 	--port 5000 \
-	--host 0.0.0.0
+	--host 0.0.0.0 \
+	$ARGS

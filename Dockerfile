@@ -5,7 +5,7 @@ RUN apk update && \
     apk add postgresql-client && \
     apk add postgresql && \
 	npm update && \
-    npm install -g postgraphql
+    npm install -g postgraphile
 
 ADD run.sh /run.sh
 EXPOSE 5000
